@@ -1,6 +1,6 @@
 <template>
   <div>
-    <drop-shadow></drop-shadow>
+    <drop-shadow />
   </div>
 </template>
 
