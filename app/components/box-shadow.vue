@@ -1,6 +1,6 @@
 <template>
   <div class="p-6">
-    <p class="mb-5 text-xl font-bold">Drop Shadow Generator</p>
+    <p class="mb-5 text-xl font-bold">Box Shadow Generator</p>
     <div class="flex flex-col gap-8 md:flex-row">
       <!-- Controls Section -->
       <div class="w-full space-y-4 md:w-1/2">
@@ -38,6 +38,16 @@
             class="w-full" />
           <span class="text-sm">{{ blur }}px</span>
         </div>
+        <div class="space-y-2">
+          <label class="block text-sm font-medium">Spread (px)</label>
+          <input
+            v-model="spread"
+            min="0"
+            type="range"
+            max="50"
+            class="w-full" />
+          <span class="text-sm">{{ spread }}px</span>
+        </div>
 
         <div class="space-y-2">
           <label class="block text-sm font-medium">Shadow Color</label>
@@ -49,8 +59,8 @@
 
         <div class="p-4 mt-6 bg-gray-100 rounded">
           <p class="font-mono text-sm break-all">
-            filter: drop-shadow({{ horizontalOffset }}px {{ verticalOffset }}px
-            {{ blur }}px {{ color }});
+            box-shadow: {{ horizontalOffset }}px {{ verticalOffset }}px
+            {{ blur }}px {{ spread }}px {{ color }};
           </p>
         </div>
       </div>
@@ -73,9 +83,9 @@
             @click="setMode('light')" />
         </div>
         <h1
-          class="text-4xl font-bold"
+          class="p-2 text-4xl font-bold"
           :style="{
-            filter: `drop-shadow(${horizontalOffset}px ${verticalOffset}px ${blur}px ${color})`,
+            'box-shadow': `${horizontalOffset}px ${verticalOffset}px ${blur}px ${spread}px ${color}`,
           }">
           Drop Shadow Preview
         </h1>
@@ -85,8 +95,9 @@
 </template>
 
 <script setup>
-const horizontalOffset = ref(0)
-const verticalOffset = ref(0)
+const horizontalOffset = ref(5)
+const verticalOffset = ref(5)
+const spread = ref(5)
 const blur = ref(5)
 const color = ref('#43eba4')
 const mode = ref('dark')

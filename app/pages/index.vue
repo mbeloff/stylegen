@@ -1,6 +1,7 @@
 <template>
   <div>
     <drop-shadow />
+    <box-shadow />
   </div>
 </template>
 
