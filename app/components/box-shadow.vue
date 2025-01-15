@@ -84,9 +84,7 @@
         </div>
         <h1
           class="p-2 text-4xl font-bold"
-          :style="{
-            'box-shadow': `${horizontalOffset}px ${verticalOffset}px ${blur}px ${spread}px ${color}`,
-          }">
+          :style="css">
           Drop Shadow Preview
         </h1>
       </div>
@@ -102,8 +100,13 @@ const blur = ref(5)
 const color = ref('#43eba4')
 const mode = ref('dark')
 
+const css = computed(() => {
+  return {
+    'box-shadow': `${horizontalOffset.value}px ${verticalOffset.value}px ${blur.value}px ${spread.value}px ${color.value}`,
+  }
+})
+
 const setMode = (e) => {
-  console.log(e + ' mode')
   mode.value = e
 }
 </script>

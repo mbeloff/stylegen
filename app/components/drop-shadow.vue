@@ -74,9 +74,7 @@
         </div>
         <h1
           class="text-4xl font-bold"
-          :style="{
-            filter: `drop-shadow(${horizontalOffset}px ${verticalOffset}px ${blur}px ${color})`,
-          }">
+          :style="css">
           Drop Shadow Preview
         </h1>
       </div>
@@ -91,8 +89,13 @@ const blur = ref(5)
 const color = ref('#43eba4')
 const mode = ref('dark')
 
+const css = computed(() => {
+  return {
+    filter: `drop-shadow(${horizontalOffset.value}px ${verticalOffset.value}px ${blur.value}px ${color.value})`,
+  }
+})
+
 const setMode = (e) => {
-  console.log(e + ' mode')
   mode.value = e
 }
 </script>
